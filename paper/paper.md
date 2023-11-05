@@ -12,7 +12,7 @@ authors:
     equal-contrib: true
     affiliation: 1
   - name: Abhiram S.P. Pamula
-  - orcid: 0000-0002-1880-2330
+    orcid: 0000-0002-1880-2330
     equal-contrib: true
     affiliation: 2
   - name: David J. Lampert
@@ -33,9 +33,9 @@ The Oklahoma Mesonet (Mesonet) is an environmental monitoring network operated b
 # Statement of need
 Data files from the Mesonet website are available as either a complete dataset for a single station on a single day or a set of all variables for all active stations at a single point in time through a web interface. However, climate research often requires specific data from multiple stations over time periods of months or years. `OKMesoPy` automates the process of downloading data over a specified time period, collating it into a single Pandas DataFrame, and extracting time series for specific variables from that data. Users can provide a bounding box or shapefile and `OKMesoPy` will download data for the stations within that geographic area. Mesonet data are recorded in UTC time. `OKMesoPy` returns DataFrames with timezone aware timestamps, simplifying conversion to local Oklahoma time.
 
-Several Mesonet variables are collected on a longer time interval than 5 minutes that results in missing data between observations. Additional data may be missing when the observations fail Mesonet's rigorous QA process, stations fail to report measurements, or calibration issues occur [@Brock:1995] [@McPherson:2007]. `OKMesoPy` provides a method for characterizing missing data and uses the `Missingno` library for visualization [@Bilogur:2018]. `OKMesoPy` provides methods for simply replacing error codes with NaN, imputing missing values with simple linear interpolation, and copying missing data from the nearest reporting station.
+Several Mesonet variables are collected on a longer time interval than 5 minutes which results in missing data between observations. Additional data may be missing when the observations fail Mesonet's rigorous QA process, stations fail to report measurements, or calibration issues occur [@Brock:1995] [@McPherson:2007]. `OKMesoPy` provides a method for characterizing missing data and uses the `Missingno` library for visualization [@Bilogur:2018]. `OKMesoPy` provides methods for simply replacing error codes with NaN, imputing missing values with simple linear interpolation, and copying missing data from the nearest reporting station.
 
-Similar software exists for several other climate databases including `MesoPy` for the MesoWest database [@MesoWest:2017] and `PyHSPF` for the GSOD, GHCND, NCDC hourly precipication, NHDPlus, and NSRDB databases [@Lampert:2015] [@Lampert:2018]. No such software exists for the Oklahoma Mesonet and `OKMesoPy` aims to fill this gap.
+Similar software exists for several other climate databases including `MesoPy` for the MesoWest database [@MesoWest:2017] and `PyHSPF` for the GSOD, GHCND, NCDC hourly precipitation, NHDPlus, and NSRDB databases [@Lampert:2015] [@Lampert:2018]. No such software exists for the Oklahoma Mesonet and `OKMesoPy` aims to fill this gap.
 
 # Target audience
 `OKMesoPy` was originally written with the intention of creating time series for use in hydrologic models with `PyHSPF`, and it provides methods for generating `PyHSPF` formatted time series [@Lampert:2015] [@Lampert:2018]. However, `OKMesoPy` is generic enough to assist with any kind of data-intensive research using the Mesonet database. Weather data from Mesonet can be converted to climate data products based on mathematical operations. `OKMesoPy` allows climatologists to automate raw data acquisition and integrate it into existing Python code or save it to a CSV file for use outside of Python.
@@ -76,7 +76,7 @@ With a single line of code, `OKMesoPy` generates a table showing the number of e
   \label{fig:missingno}
 \end{figure}
 
-\autoref{fig:missingno} shows that there is a period of missing wind speed data with -999 error codes. The -999 code is used for data that fails quality control checks [@McPherson:2007]. `OKMesoPy` can impute this data using linear interpolation or copy it from the nearest neighboring station. \autoref{fig:windspeed} shows a comparison of both methods.
+\autoref{fig:missingno} shows that there is a period of missing wind speed data with -999 error codes. The -999 code is used for data that fails quality control checks [@McPherson:2007]. `OKMesoPy` can impute this data using linear interpolation or copy it from the nearest neighboring station. \autoref{fig: windspeed} shows a comparison of both methods.
 
 \begin{figure}[h!]\centering
   {\includegraphics[width=\textwidth]{imputeddata.png}}
@@ -87,6 +87,6 @@ With a single line of code, `OKMesoPy` generates a table showing the number of e
 Finally, the data can be exported as a time series or CSV for use in other research.
 
 # Acknowledgements
-This study is based upon the work supported by U.S. Department of the Interior, Geological Survey under Grant #2021OK006G. The authors would like to thank the taxpayers of the State of Oklahoma for providing continuous financial support to the Oklahoma Mesonet network.
+This study is based upon the work supported by the U.S. Department of the Interior, Geological Survey under Grant #2021OK006G. The authors would like to thank the taxpayers of the State of Oklahoma for providing continuous financial support to the Oklahoma Mesonet network.
 
 # References
